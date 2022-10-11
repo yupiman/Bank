@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="BankModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="BankModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BankModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="BankModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerSet" EntityType="BankModel.Customer" />
+          <EntitySet Name="BankSet" EntityType="BankModel.Bank" />
+          <EntitySet Name="AccountSet" EntityType="BankModel.Account" />
+          <EntitySet Name="CustomerAccountSet" EntityType="BankModel.CustomerAccount" />
+          <AssociationSet Name="BankCustomer" Association="BankModel.BankCustomer">
+            <End Role="Bank" EntitySet="BankSet" />
+            <End Role="Customer" EntitySet="CustomerSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountTypeAccount" Association="BankModel.AccountTypeAccount">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="TypeAccount" EntitySet="CustomerAccountSet" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerTypeAccount" Association="BankModel.CustomerTypeAccount">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="TypeAccount" EntitySet="CustomerAccountSet" />
+          </AssociationSet>
+          <EntitySet Name="TypCustomerSet" EntityType="BankModel.TypCustomer" />
+          <AssociationSet Name="CustomerTypCustomer" Association="BankModel.CustomerTypCustomer">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="TypCustomer" EntitySet="TypCustomerSet" />
+          </AssociationSet>
+          <EntitySet Name="TypeAccountSet" EntityType="BankModel.TypeAccount" />
+          <AssociationSet Name="TypeAccountAccount" Association="BankModel.TypeAccountAccount">
+            <End Role="TypeAccount" EntitySet="TypeAccountSet" />
+            <End Role="Account" EntitySet="AccountSet" />
+          </AssociationSet>
+          <EntitySet Name="EmployeesSet1" EntityType="BankModel.Employees" />
+          <AssociationSet Name="BankEmployees" Association="BankModel.BankEmployees">
+            <End Role="Bank" EntitySet="BankSet" />
+            <End Role="Employees" EntitySet="EmployeesSet1" />
+          </AssociationSet>
+          <EntitySet Name="TransactionSet" EntityType="BankModel.Transaction" />
+          <AssociationSet Name="TransactionAccount" Association="BankModel.TransactionAccount">
+            <End Role="Transaction" EntitySet="TransactionSet" />
+            <End Role="Account" EntitySet="AccountSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Bank" Relationship="BankModel.BankCustomer" FromRole="Customer" ToRole="Bank" />
+          <NavigationProperty Name="TypeAccount" Relationship="BankModel.CustomerTypeAccount" FromRole="Customer" ToRole="TypeAccount" />
+          <NavigationProperty Name="TypCustomer" Relationship="BankModel.CustomerTypCustomer" FromRole="Customer" ToRole="TypCustomer" />
+          <Property Name="Addresse" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Gender" Type="String" Nullable="false" />
+          <Property Name="DateOfBirth" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Customer" Relationship="BankModel.BankCustomer" FromRole="Bank" ToRole="Customer" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Addresse" Type="String" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="BankModel.BankEmployees" FromRole="Bank" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TypeAccount" Relationship="BankModel.AccountTypeAccount" FromRole="Account" ToRole="TypeAccount" />
+          <Property Name="Saldo" Type="String" Nullable="false" />
+          <Property Name="Money" Type="String" Nullable="false" />
+          <Property Name="Payrent" Type="String" Nullable="false" />
+          <Property Name="Create" Type="String" Nullable="false" />
+          <NavigationProperty Name="TypeAccount1" Relationship="BankModel.TypeAccountAccount" FromRole="Account" ToRole="TypeAccount" />
+          <NavigationProperty Name="Transaction" Relationship="BankModel.TransactionAccount" FromRole="Account" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="CustomerAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Account" Relationship="BankModel.AccountTypeAccount" FromRole="TypeAccount" ToRole="Account" />
+          <NavigationProperty Name="Customer" Relationship="BankModel.CustomerTypeAccount" FromRole="TypeAccount" ToRole="Customer" />
+          <Property Name="DateTime" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="BankCustomer">
+          <End Type="BankModel.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountTypeAccount">
+          <End Type="BankModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="BankModel.CustomerAccount" Role="TypeAccount" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerTypeAccount">
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="BankModel.CustomerAccount" Role="TypeAccount" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TypCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Customer" Relationship="BankModel.CustomerTypCustomer" FromRole="TypCustomer" ToRole="Customer" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="CustomerTypCustomer">
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="BankModel.TypCustomer" Role="TypCustomer" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TypeAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Account" Relationship="BankModel.TypeAccountAccount" FromRole="TypeAccount" ToRole="Account" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="TypeAccountAccount">
+          <End Type="BankModel.TypeAccount" Role="TypeAccount" Multiplicity="1" />
+          <End Type="BankModel.Account" Role="Account" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Bank" Relationship="BankModel.BankEmployees" FromRole="Employees" ToRole="Bank" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Gender" Type="String" Nullable="false" />
+          <Property Name="DateOfBirth" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="BankEmployees">
+          <End Type="BankModel.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="BankModel.Employees" Role="Employees" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="String" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="BankModel.TransactionAccount" FromRole="Transaction" ToRole="Account" />
+          <Property Name="Month" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="TransactionAccount">
+          <End Type="BankModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="BankModel.Account" Role="Account" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="BankModel" />
+        <Alias Key="Target" Value="BankModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="BankModelContainer" StorageEntityContainer="BankModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

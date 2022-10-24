@@ -1,29 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BankModelStoreContainer" CdmEntityContainer="BankModelContainer">
-    <EntitySetMapping Name="CustomerSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Customer)">
-        <MappingFragment StoreEntitySet="CustomerSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Addresse" ColumnName="Addresse" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="SVNumber" ColumnName="SVNumber" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BankSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Bank)">
-        <MappingFragment StoreEntitySet="BankSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Addresse" ColumnName="Addresse" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AccountSet">
       <EntityTypeMapping TypeName="IsTypeOf(BankModel.Account)">
         <MappingFragment StoreEntitySet="AccountSet">
@@ -35,50 +12,6 @@
           <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
           <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
           <ScalarProperty Name="Iban" ColumnName="Iban" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CustomerAccountSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.CustomerAccount)">
-        <MappingFragment StoreEntitySet="CustomerAccountSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TypCustomerSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.TypCustomer)">
-        <MappingFragment StoreEntitySet="TypCustomerSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TypeAccountSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.TypeAccount)">
-        <MappingFragment StoreEntitySet="TypeAccountSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EmployeesSet1">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Employees)">
-        <MappingFragment StoreEntitySet="EmployeesSet1">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="SVNumber" ColumnName="SVNumber" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TransactionSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Transaction)">
-        <MappingFragment StoreEntitySet="TransactionSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -99,99 +32,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PositionSet">
-      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Position)">
-        <MappingFragment StoreEntitySet="PositionSet">
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.Customer)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="CustomerSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullName" ColumnName="FirstName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="SVNumber" ColumnName="SVNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="BankCustomer" TypeName="BankModel.BankCustomer" StoreEntitySet="CustomerSet">
-      <EndProperty Name="Bank">
-        <ScalarProperty Name="Id" ColumnName="Bank_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CustomerTypeAccount" TypeName="BankModel.CustomerTypeAccount" StoreEntitySet="CustomerAccountSet">
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
-      </EndProperty>
-      <EndProperty Name="TypeAccount">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="TypeAccountAccount" TypeName="BankModel.TypeAccountAccount" StoreEntitySet="AccountSet">
-      <EndProperty Name="TypeAccount">
-        <ScalarProperty Name="Id" ColumnName="TypeAccountAccount_Account_Id" />
-      </EndProperty>
-      <EndProperty Name="Account">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="BankEmployees" TypeName="BankModel.BankEmployees" StoreEntitySet="EmployeesSet1">
-      <EndProperty Name="Bank">
-        <ScalarProperty Name="Id" ColumnName="Bank_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="TypCustomerCustomer" TypeName="BankModel.TypCustomerCustomer" StoreEntitySet="CustomerSet">
-      <EndProperty Name="TypCustomer">
-        <ScalarProperty Name="Id" ColumnName="TypCustomer_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AccountAccountTransaction" TypeName="BankModel.AccountAccountTransaction" StoreEntitySet="AccountTransactionSet">
-      <EndProperty Name="Account">
-        <ScalarProperty Name="Id" ColumnName="Account_Id" />
-      </EndProperty>
-      <EndProperty Name="AccountTransaction">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="TransactionAccountTransaction" TypeName="BankModel.TransactionAccountTransaction" StoreEntitySet="AccountTransactionSet">
-      <EndProperty Name="Transaction">
-        <ScalarProperty Name="Id" ColumnName="Transaction_Id" />
-      </EndProperty>
-      <EndProperty Name="AccountTransaction">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="GenderCustomer" TypeName="BankModel.GenderCustomer" StoreEntitySet="CustomerSet">
       <EndProperty Name="Gender">
-        <ScalarProperty Name="Id" ColumnName="Gender_Id" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="GenderEmployees" TypeName="BankModel.GenderEmployees" StoreEntitySet="EmployeesSet1">
-      <EndProperty Name="Gender">
-        <ScalarProperty Name="Id" ColumnName="Gender1_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PositionEmployees" TypeName="BankModel.PositionEmployees" StoreEntitySet="EmployeesSet1">
-      <EndProperty Name="Position">
-        <ScalarProperty Name="Id" ColumnName="Position_Id" />
-      </EndProperty>
-      <EndProperty Name="Employees">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AccountCustomerAccount" TypeName="BankModel.AccountCustomerAccount" StoreEntitySet="CustomerAccountSet">
-      <EndProperty Name="Account">
-        <ScalarProperty Name="Id" ColumnName="Account_Id" />
-      </EndProperty>
-      <EndProperty Name="CustomerAccount">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

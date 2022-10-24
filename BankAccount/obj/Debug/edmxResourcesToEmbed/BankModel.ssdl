@@ -2,59 +2,16 @@
 <Schema Namespace="BankModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BankModelStoreContainer">
     <EntitySet Name="CustomerSet" EntityType="BankModel.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="BankSet" EntityType="BankModel.Store.BankSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AccountSet" EntityType="BankModel.Store.AccountSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CustomerAccountSet" EntityType="BankModel.Store.CustomerAccountSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TypCustomerSet" EntityType="BankModel.Store.TypCustomerSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TypeAccountSet" EntityType="BankModel.Store.TypeAccountSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EmployeesSet1" EntityType="BankModel.Store.EmployeesSet1" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TransactionSet" EntityType="BankModel.Store.TransactionSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AccountTransactionSet" EntityType="BankModel.Store.AccountTransactionSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GenderSet" EntityType="BankModel.Store.GenderSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PositionSet" EntityType="BankModel.Store.PositionSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="BankCustomer" Association="BankModel.Store.BankCustomer">
-      <End Role="Bank" EntitySet="BankSet" />
-      <End Role="Customer" EntitySet="CustomerSet" />
-    </AssociationSet>
-    <AssociationSet Name="CustomerTypeAccount" Association="BankModel.Store.CustomerTypeAccount">
-      <End Role="Customer" EntitySet="CustomerSet" />
-      <End Role="TypeAccount" EntitySet="CustomerAccountSet" />
-    </AssociationSet>
-    <AssociationSet Name="TypeAccountAccount" Association="BankModel.Store.TypeAccountAccount">
-      <End Role="TypeAccount" EntitySet="TypeAccountSet" />
-      <End Role="Account" EntitySet="AccountSet" />
-    </AssociationSet>
-    <AssociationSet Name="BankEmployees" Association="BankModel.Store.BankEmployees">
-      <End Role="Bank" EntitySet="BankSet" />
-      <End Role="Employees" EntitySet="EmployeesSet1" />
-    </AssociationSet>
-    <AssociationSet Name="TypCustomerCustomer" Association="BankModel.Store.TypCustomerCustomer">
-      <End Role="TypCustomer" EntitySet="TypCustomerSet" />
-      <End Role="Customer" EntitySet="CustomerSet" />
-    </AssociationSet>
     <AssociationSet Name="AccountAccountTransaction" Association="BankModel.Store.AccountAccountTransaction">
       <End Role="Account" EntitySet="AccountSet" />
-      <End Role="AccountTransaction" EntitySet="AccountTransactionSet" />
-    </AssociationSet>
-    <AssociationSet Name="TransactionAccountTransaction" Association="BankModel.Store.TransactionAccountTransaction">
-      <End Role="Transaction" EntitySet="TransactionSet" />
       <End Role="AccountTransaction" EntitySet="AccountTransactionSet" />
     </AssociationSet>
     <AssociationSet Name="GenderCustomer" Association="BankModel.Store.GenderCustomer">
       <End Role="Gender" EntitySet="GenderSet" />
       <End Role="Customer" EntitySet="CustomerSet" />
-    </AssociationSet>
-    <AssociationSet Name="GenderEmployees" Association="BankModel.Store.GenderEmployees">
-      <End Role="Gender" EntitySet="GenderSet" />
-      <End Role="Employees" EntitySet="EmployeesSet1" />
-    </AssociationSet>
-    <AssociationSet Name="PositionEmployees" Association="BankModel.Store.PositionEmployees">
-      <End Role="Position" EntitySet="PositionSet" />
-      <End Role="Employees" EntitySet="EmployeesSet1" />
-    </AssociationSet>
-    <AssociationSet Name="AccountCustomerAccount" Association="BankModel.Store.AccountCustomerAccount">
-      <End Role="Account" EntitySet="AccountSet" />
-      <End Role="CustomerAccount" EntitySet="CustomerAccountSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="CustomerSet">
@@ -71,16 +28,6 @@
     <Property Name="TypCustomer_Id" Type="int" Nullable="false" />
     <Property Name="Gender_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="BankSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Addresse" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
   <EntityType Name="AccountSet">
     <Key>
       <PropertyRef Name="Id" />
@@ -94,50 +41,6 @@
     <Property Name="ValidTo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Iban" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TypeAccountAccount_Account_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CustomerAccountSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DateTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Customer_Id" Type="int" Nullable="false" />
-    <Property Name="Account_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TypCustomerSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TypeAccountSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="EmployeesSet1">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateOfBirth" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SVNumber" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Bank_Id" Type="int" Nullable="false" />
-    <Property Name="Gender1_Id" Type="int" Nullable="false" />
-    <Property Name="Position_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TransactionSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DateTime" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="AccountTransactionSet">
     <Key>
@@ -156,73 +59,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="PositionSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <Association Name="BankCustomer">
-    <End Role="Bank" Type="BankModel.Store.BankSet" Multiplicity="1" />
-    <End Role="Customer" Type="BankModel.Store.CustomerSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bank">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="Bank_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CustomerTypeAccount">
-    <End Role="Customer" Type="BankModel.Store.CustomerSet" Multiplicity="1" />
-    <End Role="TypeAccount" Type="BankModel.Store.CustomerAccountSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TypeAccount">
-        <PropertyRef Name="Customer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="TypeAccountAccount">
-    <End Role="TypeAccount" Type="BankModel.Store.TypeAccountSet" Multiplicity="1" />
-    <End Role="Account" Type="BankModel.Store.AccountSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TypeAccount">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="TypeAccountAccount_Account_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="BankEmployees">
-    <End Role="Bank" Type="BankModel.Store.BankSet" Multiplicity="1" />
-    <End Role="Employees" Type="BankModel.Store.EmployeesSet1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bank">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Bank_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="TypCustomerCustomer">
-    <End Role="TypCustomer" Type="BankModel.Store.TypCustomerSet" Multiplicity="1" />
-    <End Role="Customer" Type="BankModel.Store.CustomerSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TypCustomer">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="TypCustomer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="AccountAccountTransaction">
     <End Role="Account" Type="BankModel.Store.AccountSet" Multiplicity="1" />
     <End Role="AccountTransaction" Type="BankModel.Store.AccountTransactionSet" Multiplicity="*" />
@@ -235,18 +71,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="TransactionAccountTransaction">
-    <End Role="Transaction" Type="BankModel.Store.TransactionSet" Multiplicity="1" />
-    <End Role="AccountTransaction" Type="BankModel.Store.AccountTransactionSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Transaction">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AccountTransaction">
-        <PropertyRef Name="Transaction_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="GenderCustomer">
     <End Role="Gender" Type="BankModel.Store.GenderSet" Multiplicity="1" />
     <End Role="Customer" Type="BankModel.Store.CustomerSet" Multiplicity="*" />
@@ -256,42 +80,6 @@
       </Principal>
       <Dependent Role="Customer">
         <PropertyRef Name="Gender_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="GenderEmployees">
-    <End Role="Gender" Type="BankModel.Store.GenderSet" Multiplicity="1" />
-    <End Role="Employees" Type="BankModel.Store.EmployeesSet1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Gender">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Gender1_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PositionEmployees">
-    <End Role="Position" Type="BankModel.Store.PositionSet" Multiplicity="1" />
-    <End Role="Employees" Type="BankModel.Store.EmployeesSet1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Position">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="Position_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AccountCustomerAccount">
-    <End Role="Account" Type="BankModel.Store.AccountSet" Multiplicity="1" />
-    <End Role="CustomerAccount" Type="BankModel.Store.CustomerAccountSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CustomerAccount">
-        <PropertyRef Name="Account_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

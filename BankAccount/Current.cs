@@ -12,18 +12,20 @@ namespace BankAccount
     using System;
     using System.Collections.Generic;
     
-    public partial class TypCustomer
+    public partial class Current : Account
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypCustomer()
+        public Current()
         {
-            this.Customer = new HashSet<Customer>();
+            this.Income = new HashSet<Income>();
+            this.Outcome = new HashSet<Outcome>();
         }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
     
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customer { get; set; }
+        public virtual ICollection<Income> Income { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Outcome> Outcome { get; set; }
     }
 }

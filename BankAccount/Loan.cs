@@ -12,18 +12,17 @@ namespace BankAccount
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class Loan : Account
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Transaction()
+        public Loan()
         {
-            this.AccountTransaction = new HashSet<AccountTransaction>();
+            this.Income = new HashSet<Income>();
         }
     
-        public int Id { get; set; }
-        public string DateTime { get; set; }
     
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountTransaction> AccountTransaction { get; set; }
+        public virtual ICollection<Income> Income { get; set; }
     }
 }

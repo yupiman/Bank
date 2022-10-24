@@ -25,16 +25,9 @@ namespace BankAccount
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> CustomerSet { get; set; }
-        public virtual DbSet<Bank> BankSet { get; set; }
         public virtual DbSet<Account> AccountSet { get; set; }
-        public virtual DbSet<CustomerAccount> CustomerAccountSet { get; set; }
-        public virtual DbSet<TypCustomer> TypCustomerSet { get; set; }
-        public virtual DbSet<TypeAccount> TypeAccountSet { get; set; }
-        public virtual DbSet<Employees> EmployeesSet1 { get; set; }
-        public virtual DbSet<Transaction> TransactionSet { get; set; }
         public virtual DbSet<AccountTransaction> AccountTransactionSet { get; set; }
         public virtual DbSet<Gender> GenderSet { get; set; }
-        public virtual DbSet<Position> PositionSet { get; set; }
+        public virtual DbSet<Customer> CustomerSet { get; set; }
     }
 }

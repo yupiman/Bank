@@ -70,36 +70,9 @@
     <Compile Include="AccountTransaction.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Bank.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="BankModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerAccount.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employees.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Gender.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Position.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Transaction.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TypCustomer.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TypeAccount.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -120,12 +93,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BankModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Current.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gender.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Income.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Legal.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Loan.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mortgage.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Outcome.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Private.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

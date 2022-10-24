@@ -12,17 +12,8 @@ namespace BankAccount
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class Private : Customer
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string DateOfBirth { get; set; }
-        public string LastName { get; set; }
-        public string SVNumber { get; set; }
-        public string StartDate { get; set; }
-    
-        public virtual Bank Bank { get; set; }
-        public virtual Gender Gender1 { get; set; }
-        public virtual Position Position { get; set; }
+        public string Property1 { get; set; }
     }
 }

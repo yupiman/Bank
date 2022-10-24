@@ -12,12 +12,9 @@ namespace BankAccount
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerAccount
+    public partial class Outcome : AccountTransaction
     {
-        public int Id { get; set; }
-        public string DateTime { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Account Account { get; set; }
+        public virtual Current Current { get; set; }
     }
 }

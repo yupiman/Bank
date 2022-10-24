@@ -17,20 +17,22 @@ namespace BankAccount
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.TypeAccount = new HashSet<CustomerAccount>();
+            this.Current = new HashSet<Current>();
+            this.Mortgage = new HashSet<Mortgage>();
+            this.Loan = new HashSet<Loan>();
         }
     
         public int Id { get; set; }
-        public string Addresse { get; set; }
-        public string FirstName { get; set; }
-        public string DateOfBirth { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
         public string SVNumber { get; set; }
     
-        public virtual Bank Bank { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAccount> TypeAccount { get; set; }
-        public virtual TypCustomer TypCustomer { get; set; }
         public virtual Gender Gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Current> Current { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mortgage> Mortgage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Loan> Loan { get; set; }
     }
 }

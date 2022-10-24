@@ -16,9 +16,6 @@ namespace BankAccount
     {
         public int Id { get; set; }
         public string ExecutionTime { get; set; }
-        public string Saldo { get; set; }
-    
-        public virtual Account Account { get; set; }
-        public virtual Transaction Transaction { get; set; }
+        public string Amount { get; set; }
     }
 }

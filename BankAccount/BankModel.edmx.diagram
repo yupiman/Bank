@@ -5,29 +5,38 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5cfaad21a5ff44beb753ec2efa9476d6" Name="Diagram1" >
-        <EntityTypeShape EntityType="BankModel.Customer" Width="2.75" PointX="2.625" PointY="2.625" />
-        <EntityTypeShape EntityType="BankModel.Bank" Width="2.375" PointX="2.625" PointY="7.5" />
-        <EntityTypeShape EntityType="BankModel.Account" Width="2" PointX="9.5" PointY="2.5" />
-        <EntityTypeShape EntityType="BankModel.CustomerAccount" Width="2" PointX="6.375" PointY="2.625" />
-        <AssociationConnector Association="BankModel.BankCustomer" />
-        <AssociationConnector Association="BankModel.CustomerTypeAccount" />
-        <EntityTypeShape EntityType="BankModel.TypCustomer" Width="1.5" PointX="0.5" PointY="3" />
-        <EntityTypeShape EntityType="BankModel.TypeAccount" Width="2" PointX="9.5" PointY="6" />
-        <AssociationConnector Association="BankModel.TypeAccountAccount" />
-        <EntityTypeShape EntityType="BankModel.Employees" Width="2" PointX="6.375" PointY="7.25" />
-        <AssociationConnector Association="BankModel.BankEmployees" />
-        <EntityTypeShape EntityType="BankModel.Transaction" Width="1.75" PointX="12.5" PointY="5.25" />
-        <AssociationConnector Association="BankModel.TypCustomerCustomer" />
-        <EntityTypeShape EntityType="BankModel.AccountTransaction" Width="1.75" PointX="12.5" PointY="2.5" />
-        <AssociationConnector Association="BankModel.AccountAccountTransaction" />
-        <AssociationConnector Association="BankModel.TransactionAccountTransaction" />
-        <EntityTypeShape EntityType="BankModel.Gender" Width="2" PointX="6.375" PointY="4.75" />
-        <AssociationConnector Association="BankModel.GenderCustomer" />
-        <AssociationConnector Association="BankModel.GenderEmployees" />
-        <EntityTypeShape EntityType="BankModel.Position" Width="2" PointX="9.5" PointY="7.875" />
-        <AssociationConnector Association="BankModel.PositionEmployees" ManuallyRouted="false" >
+        <EntityTypeShape EntityType="BankModel.Customer" Width="2.75" PointX="1" PointY="2.625" />
+        <EntityTypeShape EntityType="BankModel.Account" Width="2" PointX="8.125" PointY="0.5" />
+        <EntityTypeShape EntityType="BankModel.AccountTransaction" Width="1.75" PointX="14.125" PointY="0.5" />
+        <EntityTypeShape EntityType="BankModel.Gender" Width="2" PointX="4.5" PointY="0.5" />
+        <AssociationConnector Association="BankModel.GenderCustomer" ManuallyRouted="false" >
         </AssociationConnector>
-        <AssociationConnector Association="BankModel.AccountCustomerAccount" />
+        <EntityTypeShape EntityType="BankModel.Private" Width="1.5" PointX="3.25" PointY="7.75" />
+        <InheritanceConnector EntityType="BankModel.Private" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="BankModel.Legal" Width="2.25" PointX="0.5" PointY="7.75" />
+        <InheritanceConnector EntityType="BankModel.Legal" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="BankModel.Current" Width="1.5" PointX="6.25" PointY="7.25" />
+        <EntityTypeShape EntityType="BankModel.Mortgage" Width="1.5" PointX="8.875" PointY="7.25" />
+        <EntityTypeShape EntityType="BankModel.Loan" Width="1.5" PointX="10.625" PointY="7.25" />
+        <InheritanceConnector EntityType="BankModel.Current" />
+        <InheritanceConnector EntityType="BankModel.Mortgage" />
+        <InheritanceConnector EntityType="BankModel.Loan" />
+        <AssociationConnector Association="BankModel.CustomerCurrent" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="BankModel.CustomerMortgage" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="BankModel.CustomerLoan" />
+        <EntityTypeShape EntityType="BankModel.Outcome" Width="1.5" PointX="12.875" PointY="2.625" />
+        <EntityTypeShape EntityType="BankModel.Income" Width="1.5" PointX="15.75" PointY="2.625" />
+        <InheritanceConnector EntityType="BankModel.Outcome" />
+        <InheritanceConnector EntityType="BankModel.Income" />
+        <AssociationConnector Association="BankModel.LoanIncome" />
+        <AssociationConnector Association="BankModel.MortgageIncome" />
+        <AssociationConnector Association="BankModel.CurrentIncome" />
+        <AssociationConnector Association="BankModel.CurrentOutcome" ManuallyRouted="false" >
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

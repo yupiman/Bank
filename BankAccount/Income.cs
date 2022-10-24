@@ -12,14 +12,11 @@ namespace BankAccount
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Income : AccountTransaction
     {
-        public int Id { get; set; }
-        public string Balance { get; set; }
-        public string Rate { get; set; }
-        public string InterestRate { get; set; }
-        public string CreateTime { get; set; }
-        public string CardNumber { get; set; }
-        public string Iban { get; set; }
+    
+        public virtual Loan Loan { get; set; }
+        public virtual Mortgage Mortgage { get; set; }
+        public virtual Current Current { get; set; }
     }
 }

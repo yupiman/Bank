@@ -18,7 +18,6 @@ namespace BankAccount
         public Gender()
         {
             this.Customer = new HashSet<Customer>();
-            this.Employees = new HashSet<Employees>();
         }
     
         public int Id { get; set; }
@@ -26,7 +25,5 @@ namespace BankAccount
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
     }
 }

@@ -5,14 +5,19 @@ using System.Text;
 
 namespace BankAccount
 {
-    public abstract class Customer
+    public class Giro : Account
     {
-        public Account Account
+        public Outcome Outcome
         {
             get => default;
             set
             {
             }
+        }
+
+        public void SetChargedAmount()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

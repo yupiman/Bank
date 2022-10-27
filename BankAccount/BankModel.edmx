@@ -195,15 +195,15 @@
           <NavigationProperty Name="Income" Relationship="BankModel.LoanIncome" FromRole="Loan" ToRole="Income" />
         </EntityType>
         <Association Name="CustomerCurrent">
-          <End Type="BankModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="BankModel.Current" Role="Current" Multiplicity="*" />
         </Association>
         <Association Name="CustomerMortgage">
-          <End Type="BankModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="BankModel.Mortgage" Role="Mortgage" Multiplicity="*" />
         </Association>
         <Association Name="CustomerLoan">
-          <End Type="BankModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="BankModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="BankModel.Loan" Role="Loan" Multiplicity="*" />
         </Association>
         <EntityType Name="Outcome" BaseType="BankModel.AccountTransaction">
